@@ -1,0 +1,96 @@
+%loads the class that provides the titlepage and some general packages.
+\documentclass{UniVieCS_Thesis}
+
+%add the additional packages and macros that you want to use
+\input{packages_macros}
+\usepackage{scrhack} % Fix deprecated \float@addtolist warning
+\let\cleardoublepage\clearpage
+\usepackage{chngcntr}          % <-- in die Präambel
+\usepackage{subcaption}
+% \usepackage{float}
+\usepackage{siunitx}
+\sisetup{
+        per-mode=fraction,
+        fraction-function=\tfrac
+      }
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% important update for glossaries, before document 
+\loadglsentries{C) Back Matter/acronyms.tex}
+\loadglsentries{C) Back Matter/glossary.tex} 
+\makeglossaries %https://www.overleaf.com/learn/latex/glossaries
+
+%shows fixme notes
+\fxsetup{status=draft} % comment/delete this line if you want to your final output
+
+\usepackage[ngerman, british]{babel} %if changed to \usepackage[ngerman]{babel} "Table of contents" changes to "Inhaltsverzeichnis", "abstract" becomes "Zusammenfassung" and "references" is translated to "Literatur".
+
+
+%remove all the things you don't need and add all the things you need. you can also change the order of the elements at your will.
+\begin{document}
+\counterwithout{equation}{chapter}   % entfernt die Kopplung an das Kapitel
+\counterwithout{figure}{chapter}
+    %Start with front matter
+    
+    %Choose the titlepage you want to use
+
+    % \input{A) Front Matter/titlepage} %Creates the titlepage for master
+    \input{A) Front Matter/titlepage_bsc} %Creates the titlepage for bachelor
+    %\input{A) Front Matter/titlepage_phd} %Creates the titlepage for phd
+    
+    \clearpage
+	\frontmatter{}
+	\input{A) Front Matter/abstracts} % adds the abstract
+	% \input{A) Front Matter/kurzfassung} %adds the "Kurzfassung"in german.
+	% \pagebreak
+	
+    \microtypesetup{protrusion=false}
+    \tableofcontents{}
+    % Use an optional list of tables / figures / algorithms / listings(code).
+    % \listoftables 
+    \listoffigures
+    \cleardoublepage{}
+    % \listofalgorithms
+    % \addcontentsline{toc}{chapter}{List of Algorithms} 
+    % \cleardoublepage{}
+    % \lstlistoflistings
+    \cleardoublepage{}
+    \microtypesetup{protrusion=true}
+    
+	\pagebreak
+	
+	%add your chapters here
+	\mainmatter{}
+    \input{B) Chapters/introduction.tex}
+    \input{B) Chapters/methodology.tex}
+    \input{B) Chapters/results.tex}
+    \input{B) Chapters/discussion.tex}
+    \input{B) Chapters/conclusion.tex}
+
+    % End with back matter
+    \input{C) Back Matter/acknowledgements.tex} %adds the acknowledgements
+    
+	%add your sources in the bib file and change the style here
+    \renewcommand{\bibname}{References} 
+    \bibliographystyle{unsrt}
+	\bibliography{bibliography}
+	
+	\printglossary[type=\acronymtype]
+    \printglossary
+
+    \cleardoublepage{}
+	\pagebreak
+	
+	%add your end matter here
+	\appendix{}
+
+	\input{C) Back Matter/appendix}
+	
+	
+	
+\end{document}
