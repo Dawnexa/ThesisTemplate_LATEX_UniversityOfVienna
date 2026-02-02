@@ -20,6 +20,18 @@
     urlcolor=blue
 }
 
+\usepackage[
+  backend=biber,      % use biber for processing
+	style=ieee,      % IEEE style
+	sorting=none,       % no sorting
+	   doi=true,             % print DOIs when present
+	url=false,            % suppress URLs unless no DOI
+]{biblatex}
+
+% Point to your .bib file (you can list several if you like)
+\addbibresource{bibliography.bib}
+
+
 % important update for glossaries, before document 
 \loadglsentries{C) Back Matter/acronyms.tex}
 \loadglsentries{C) Back Matter/glossary.tex} 
@@ -69,7 +81,7 @@
     \input{B) Chapters/introduction.tex}
     \input{B) Chapters/methodology.tex}
     \input{B) Chapters/results.tex}
-    \input{B) Chapters/discussion.tex}
+    % \input{B) Chapters/discussion.tex}
     \input{B) Chapters/conclusion.tex}
 
     % End with back matter
@@ -77,8 +89,7 @@
     
 	%add your sources in the bib file and change the style here
     \renewcommand{\bibname}{References} 
-    \bibliographystyle{unsrt}
-	\bibliography{bibliography}
+    \printbibliography[title={References}]
 	
 	\printglossary[type=\acronymtype]
     \printglossary
@@ -89,8 +100,6 @@
 	%add your end matter here
 	\appendix{}
 
-	\input{C) Back Matter/appendix}
-	
-	
+	% \input{C) Back Matter/appendix}
 	
 \end{document}

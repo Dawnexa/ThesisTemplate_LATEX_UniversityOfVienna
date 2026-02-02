@@ -99,11 +99,11 @@
 		\fontfamily{phv}\selectfont
 		\thispagestyle{empty}
 		\begin{center}
-            \begin{adjustwidth}{-0.5cm}{-2cm}    
+            \begin{adjustwidth}{-1cm}{-1cm}    
 				\vspace*{-2cm}
 				\hspace*{10.17cm}
 				%University logo
-				\includegraphics[width=0.45\linewidth]{figures/logo_nontransparent.jpg}\par
+				\includegraphics[width=0.45\linewidth]{figures/Uni_Logo_SW.png}\par
 				
 			    \vspace{2.5cm}
 				\centering 	
